@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ProcessCards from '../components/ProcessCards.astro';
+import Cta from '../components/Cta.astro';
+import { progetto } from '../data/progetti';
+import { fasi } from '../data/contenuti';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Metodo', href: '/metodo/' }];
+const hero = progetto('confini-fondo-garlasco').immagini[2];
+---
+<Layout title="Come lavoriamo: dal sopralluogo al catasto | De Falco" description="Le fasi di lavoro dello Studio Tecnico De Falco di Mortara: incontro, rilievo, progetto, pratiche, sicurezza, direzione lavori e catasto." ogType="article" transparent crumbs={crumbs}>
+<PageHero img={hero} crumbs={crumbs} eyebrow="Metodo"> <h1 class="h1-page">Dal primo sopralluogo al catasto</h1> <p class="lead">Un unico referente segue rilievo, progetto, pratiche, sicurezza e cantiere.</p> </PageHero>
+<section class="section"> <div class="container"> <ProcessCards h="h2" /> </div> </section>
+<section class="section bg-sand"> <div class="container"> <div class="section-head reveal"> <div> <p class="eyebrow mb-2">Le fasi nel dettaglio</p> <h2 class="h2">Nove passaggi, un solo referente</h2> <p class="lead mt-2">Ogni lavoro è diverso, ma il metodo è lo stesso: chiarezza su tempi, costi e documenti in ogni fase.</p> </div> <a href="/contatti/#richiesta" class="btn btn-primary">Fissa un primo incontro</a> </div> <ol class="steps"> {fasi.map((f, i) => <li id={`fase-${i + 1}`} class="reveal" style={`transition-delay:${(i % 3) * 60}ms`}> <span class="n">{String(i + 1).padStart(2, '0')}</span> <h3 class="h4">{f.titolo}</h3> <p>{f.testo}</p> </li>)} </ol> </div> </section>
+<Cta />
+</Layout>

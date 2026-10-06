@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import Cta from '../../components/Cta.astro';
+import { abs } from '../../data/site';
+import { progetti } from '../../data/progetti';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Progetti', href: '/progetti/' }];
+const ld = [{
+  '@type': 'ItemList',
+  name: 'Progetti',
+  numberOfItems: progetti.length,
+  itemListElement: progetti.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/progetti/${p.slug}/`), name: p.titolo })),
+}];
+---
+<Layout title="Lavori del geometra a Mortara | Studio Tecnico De Falco" description="Dodici lavori dello Studio Tecnico De Falco in Lomellina: ristrutturazioni, nuove costruzioni, rilievi, frazionamenti, sanatorie e cantieri." pageType="CollectionPage" crumbs={crumbs} ld={ld}>
+<PageHead crumbs={crumbs} eyebrow="Portfolio" title="Progetti"> <p class="lead mt-3 narrow">Dodici lavori seguiti dallo studio tra Mortara, Vigevano, Robbio, Mede e Garlasco: case a corte e appartamenti, villette e capannoni, rilievi e frazionamenti, sanatorie e cantieri.</p> </PageHead>
+<Portfolio lista={progetti} />
+<Cta />
+</Layout>

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Picture from '../components/Picture.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site';
+import { team } from '../data/team';
+import { progetto } from '../data/progetti';
+import { numeriStudio, approccio, competenzeStudio } from '../data/contenuti';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Lo studio', href: '/studio/' }];
+const hero = progetto('sottotetto-mede').immagini[0];
+const foto = [progetto('casa-a-corte-mortara').immagini[3], progetto('rilievo-cascina-robbio').immagini[4]];
+---
+<Layout title="Lo studio: geom. Giovanni De Falco a Mortara" description="Lo Studio Tecnico De Falco: il geometra Giovanni De Falco, in Via Cesare Bressa 11 a Mortara. Edilizia, catasto, rilievi e sicurezza in Lomellina." pageType="AboutPage" ogType="article" transparent crumbs={crumbs}>
+<PageHero img={hero} crumbs={crumbs} eyebrow="Lo studio"> <h1 class="h1-page">Uno studio tecnico, <em style="color: var(--accent-on-dark)">un referente unico</em></h1> <p class="lead">Edilizia, catasto e topografia per famiglie, aziende e condomini di Mortara e della Lomellina.</p> </PageHero>
+<section class="section"> <div class="container split"> <div class="reveal"> <p class="eyebrow mb-2">Chi siamo</p> <h2 class="h2">De Falco Geom. Giovanni</h2> </div> <div class="prose lead reveal"> <p><strong>Lo Studio Tecnico De Falco</strong> è lo studio del geometra Giovanni De Falco, con sede in Via Cesare Bressa 11 a Mortara. Si occupa di progetti e ristrutturazioni, pratiche edilizie, catasto e rilievi.</p> <p>Lavora per privati, aziende agricole, imprese e condomini, seguendo ogni incarico di persona dal primo sopralluogo fino alla fine dei lavori e all’aggiornamento del catasto.</p> <p>I servizi comprendono progettazione e direzione lavori, pratiche edilizie e sanatorie, accatastamenti e successioni, rilievi topografici e confini, coordinamento della sicurezza, stime, perizie e APE.</p> </div> </div> <div class="container mt-4"> <div class="stats reveal"> {numeriStudio.map((s) => <div class="stat"><strong>{s.n}</strong><span>{s.label}</span></div>)} </div> </div> </section>
+<section class="section bg-sand"> <div class="container"> <div class="section-head reveal"> <div> <p class="eyebrow">Approccio</p> <h2 class="h2">Cosa ci distingue</h2> </div> </div> <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2.5rem"> {approccio.map((a, i) => <div class="reveal border-top" style={`padding-top:1.5rem; transition-delay:${i * 80}ms`}> <p class="eyebrow mb-2">{String(i + 1).padStart(2, '0')}</p> <h3 class="h3 mb-2">{a.titolo}</h3> <p>{a.testo}</p> </div>)} </div> <div class="grid-2 mt-4"> {foto.map((f) => <div class="ratio-32 reveal"><Picture img={f} sizes="(min-width: 1024px) 45vw, 92vw" /></div>)} </div> </div> </section>
+<section class="section" id="team"> <div class="container"> <div class="section-head reveal"> <div> <p class="eyebrow">Il team</p> <h2 class="h2">Il titolare dello studio</h2> <p class="lead mt-2">Il titolare segue personalmente ogni incarico, appoggiandosi a imprese e professionisti di fiducia della zona.</p> </div> </div> <ul class="team-grid"> {team.map((m, i) => <li class="member reveal" id={m.id} style={`transition-delay:${(i % 4) * 60}ms`}> <div class="photo"><Picture img={m.foto} sizes="(min-width: 1100px) 22vw, (min-width: 768px) 30vw, 46vw" /></div> <h3>{m.nome}</h3> <p>{m.ruolo}</p> </li>)} </ul> </div> </section>
+<section class="section bg-sand"> <div class="container grid-2"> <div class="reveal"> <p class="eyebrow mb-2">La sede</p> <h2 class="h2">{site.indirizzo.via}, {site.indirizzo.citta}</h2> <p class="lead mt-3">Lo studio è in centro a Mortara, comodo da raggiungere da tutta la Lomellina. Riceviamo clienti, imprese e tecnici su appuntamento.</p> <div class="btn-row mt-4"> <a href="/contatti/" class="btn btn-primary">Contatti e orari</a> <a href={site.mapsUrl} target="_blank" rel="noopener" class="btn btn-outline">Indicazioni stradali</a> </div> </div> <div class="reveal"> <ul class="checklist lead"> {competenzeStudio.map((c) => <li>{c}</li>)} </ul> </div> </div> </section>
+<Cta />
+</Layout>

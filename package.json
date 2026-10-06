@@ -1,0 +1,25 @@
+{
+  "name": "defalco-geometra",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --port 4730",
+    "build": "astro build",
+    "preview": "astro preview --port 4731",
+    "astro": "astro",
+    "slots": "node scripts/slots.mjs",
+    "placeholders": "node scripts/placeholders.mjs",
+    "check-residui": "node scripts/check-residui.mjs",
+    "check-links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/newsreader": "^5.2.5",
+    "astro": "5.18.2"
+  },
+  "overrides": {
+    "rollup": "4.63.0"
+  }
+}

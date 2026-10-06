@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHead from '../components/PageHead.astro';
+import Icon from '../components/Icon.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site, abs } from '../data/site';
+import { servizi } from '../data/servizi';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Contatti', href: '/contatti/' }];
+const ld = [{
+  '@type': 'ContactPoint',
+  '@id': abs('/contatti/#contatto'),
+  contactType: 'customer service',
+  telephone: site.telefonoE164,
+  ...(site.email ? { email: site.email } : {}),
+  areaServed: 'IT',
+  availableLanguage: ['Italian'],
+}];
+// Form: collegato solo se site.form è configurato. Altrimenti il submit è bloccato (data-form-off).
+const f = site.form;
+const collegato = f.netlify || f.endpoint !== '';
+const action = f.netlify ? '/grazie/' : f.endpoint || '#';
+---
+<Layout title={`Contatti – ${site.indirizzo.via}, ${site.indirizzo.citta} | ${site.nome}`} description="Studio Tecnico De Falco, geometra a Mortara: Via Cesare Bressa 11, tel. 0384 90348. Richiedi un sopralluogo o un preventivo." pageType="ContactPage" ogType="article" crumbs={crumbs} ld={ld}>
+<PageHead crumbs={crumbs} eyebrow="Contatti" title="Parliamo del tuo progetto"> <p class="lead mt-3 narrow">Chiamaci, compila il modulo o passa in studio su appuntamento: valutiamo insieme l’immobile, le pratiche necessarie e i costi.</p> </PageHead>
+<section class="section"> <div class="container contact-layout"> <div class="contact-side"> <div class="info-cards"> <div class="info-card"> <h2><Icon name="pin" class="ic" /> Indirizzo</h2> <p>{site.indirizzo.via}<br>{site.indirizzo.cap} {site.indirizzo.citta} ({site.indirizzo.provincia})</p> <a href={site.mapsUrl} target="_blank" rel="noopener" class="text-link link-underline">Indicazioni stradali</a> </div> <div class="info-card"> <h2><Icon name="telefono" class="ic" /> Telefono</h2> <p><a href={`tel:${site.telefonoE164}`}>{site.telefono}</a></p> <a href={`tel:${site.telefonoE164}`} class="text-link link-underline">Chiama ora</a> </div> {site.email
+  ? <div class="info-card"> <h2><Icon name="email" class="ic" /> Email</h2> <p><a href={`mailto:${site.email}`}>{site.email}</a></p> <a href={`mailto:${site.email}`} class="text-link link-underline">Scrivici</a> </div>
+  : <div class="info-card"> <h2><Icon name="stella" class="ic" /> Recensioni</h2> <p>{site.recensioni.voto} su 5 su Google<br>{site.recensioni.numero} recensioni</p> <a href={site.mapsUrl} target="_blank" rel="noopener" class="text-link link-underline">Leggi su Google</a> </div>} <div class="info-card"> <h2>Ricevimento</h2> <p>{site.ricevimento}</p> </div> </div> <div class="map-box"> <MapEmbed span={0.01} /> </div> <p class="xs muted">Mappa © OpenStreetMap contributors</p> </div> <div id="richiesta" class="form-card"> <h2 class="h3">Richiedi un preventivo</h2> <p class="mt-1 muted">Compila il modulo: ti ricontatteremo al più presto.</p> <form class="form" name="contatti" method="POST" action={action} data-netlify={f.netlify ? 'true' : undefined} netlify-honeypot={f.netlify ? 'indirizzo-web' : undefined} data-form-off={collegato ? undefined : ''}> <input type="hidden" name="form-name" value="contatti"> <p class="hp"><label>Non compilare: <input name="indirizzo-web" tabindex="-1" autocomplete="off"></label></p> <div class="two"> <div class="field"><label for="f-nome">Nome e cognome *</label><input id="f-nome" name="nome" required autocomplete="name"></div> <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required autocomplete="email"></div> </div> <div class="two"> <div class="field"><label for="f-tel">Telefono</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel"></div> <div class="field"><label for="f-comune">Comune dell’immobile</label><input id="f-comune" name="comune" autocomplete="address-level2"></div> </div> <div class="field"> <label for="f-servizio">Di cosa hai bisogno?</label> <select id="f-servizio" name="servizio"> <option value="">Seleziona un servizio</option> {servizi.map((s) => <option>{s.nome}</option>)} <option>Altro</option> </select> </div> <div class="field"> <label for="f-msg">Messaggio *</label> <textarea id="f-msg" name="messaggio" required placeholder="Descrivi brevemente l’immobile e l’intervento che desideri"></textarea> </div> <label class="check"> <input type="checkbox" name="privacy" required> <span>Ho letto l’<a href="/privacy-policy/">informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</span> </label> <div><button type="submit" class="btn btn-primary">Invia la richiesta</button></div> </form> </div> </div> </section>
+<script>
+// Base: finché il form non è collegato (src/data/site.ts → form) l'invio è bloccato.
+const off = document.querySelector('form[data-form-off]');
+off?.addEventListener('submit', (ev) => { ev.preventDefault(); alert('Modulo non ancora collegato: configurare site.form in src/data/site.ts'); });
+</script>
+</Layout>

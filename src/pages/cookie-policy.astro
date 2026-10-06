@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHead from '../components/PageHead.astro';
+import { site } from '../data/site';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Cookie policy', href: '/cookie-policy/' }];
+---
+<Layout title={`Cookie policy | ${site.nome}`} description={`Cookie policy del sito di ${site.nome}: nessun cookie di profilazione.`} crumbs={crumbs}>
+<PageHead crumbs={crumbs} title="Cookie policy"> <p class="lead mt-2">Questo sito rispetta la tua privacy: niente cookie di profilazione, niente tracciamenti pubblicitari.</p> </PageHead>
+<section class="section"> <div class="container narrow prose"> <h2>Cookie utilizzati</h2> <p>Il sito di {site.nome} <strong>non installa cookie di profilazione né cookie analitici di terze parti</strong>. Per questo motivo non è necessario un banner di consenso.</p> <p>I caratteri tipografici sono ospitati direttamente sul nostro server, senza collegamenti a servizi esterni.</p> <h2>Contenuti di terze parti</h2> <p>Nelle pagine Home e Contatti è presente una mappa fornita da OpenStreetMap, caricata solo quando la sezione diventa visibile. OpenStreetMap non utilizza cookie di profilazione; per maggiori informazioni si veda la privacy policy della OpenStreetMap Foundation (wiki.osmfoundation.org/wiki/Privacy_Policy).</p> <p>I link esterni (ad esempio Google Maps o i social network) portano a siti di terze parti, che applicano le proprie informative.</p> <h2>Gestione dal browser</h2> <p>Puoi in ogni momento cancellare o bloccare i cookie dalle impostazioni del tuo browser.</p> <h2>Contatti</h2> <p>Per qualsiasi domanda {site.email ? <>scrivi a <a href={`mailto:${site.email}`}>{site.email}</a></> : <>chiama lo {site.telefono}</>}.</p> </div> </section>
+</Layout>

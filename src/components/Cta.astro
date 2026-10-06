@@ -1,0 +1,6 @@
+---
+/** Fascia CTA color accento in fondo alle pagine. Il segno grafico è un motivo neutro: sostituibile con il segno del logo cliente. */
+import { site } from '../data/site';
+import { cta } from '../data/contenuti';
+---
+<section class="cta section-sm"> <svg class="gmark" width="416" height="416" viewBox="0 0 64 64" fill="none" aria-hidden="true">  <path d="M1.5 1.5v61h61zM14 31v19h19z" stroke="currentColor" stroke-width="3" stroke-linejoin="miter"></path> </svg> <div class="container"> <div class="narrow reveal"> <p class="eyebrow-light mb-2">{cta.eyebrow}</p> <h2 class="h2">{cta.titolo}</h2> <p class="lead mt-2" style="color: rgb(255 255 255 / 0.88)">{cta.testo}</p> <div class="btn-row mt-4"> <a href="/contatti/#richiesta" class="btn btn-primary">Richiedi un preventivo</a> <a href={`tel:${site.telefonoE164}`} class="btn btn-outline-light">Chiama lo {site.telefono}</a> </div> </div> </div> </section>
