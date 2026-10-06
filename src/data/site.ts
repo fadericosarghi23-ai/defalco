@@ -20,10 +20,9 @@ export const site = {
   footerClaim: 'Studio tecnico di geometra a Mortara, al servizio di famiglie, imprese e professionisti della Lomellina.',
 
   // ── Dominio e tecnici ───────────────────────────────────────────────
-  /** Dominio canonico SENZA slash finale. Tenere allineato con SITE_URL in astro.config.mjs */
   /** Dominio canonico: arriva da astro.config.mjs (variabile URL di Netlify in build) */
   dominio: String(import.meta.env.SITE || 'https://esempio.it').replace(/\/$/, ''),
-  themeColor: '#1d4f7a',
+  themeColor: '#a51d24',
   geoRegion: 'IT-PV',
 
   // ── Contatti ────────────────────────────────────────────────────────

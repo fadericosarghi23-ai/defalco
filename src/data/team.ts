@@ -12,7 +12,7 @@ export const team: Membro[] = [
     id: 'giovanni-de-falco',
     nome: 'Giovanni De Falco',
     ruolo: 'Geometra',
-    foto: tav('team-giovanni-de-falco', 1000, 1500, 'ritratto', 'blu', 'Geom. Giovanni De Falco, titolare dello studio (ritratto da inserire)'),
+    foto: tav('team-giovanni-de-falco', 1000, 1500, 'ritratto', 'scuro', 'Geom. Giovanni De Falco, titolare dello studio (ritratto da inserire)'),
   },
 ];
 

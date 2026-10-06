@@ -80,7 +80,7 @@ const p = (
   ...base,
   referente: 'giovanni-de-falco',
   immagini: foto.map(([w, h, tipo, alt, disegno], i) => {
-    const stile: Stile = disegno ? 'carta' : 'blu';
+    const stile: Stile = disegno ? 'carta' : 'scuro';
     return tav(`${slug}-${String(i + 1).padStart(2, '0')}`, w, h, tipo, stile, alt, { drawing: disegno, seme: slug.length * 31 + i * 7 });
   }),
 });

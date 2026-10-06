@@ -11,6 +11,7 @@ export default defineConfig({
   // 'ignore': i link restano con lo slash finale (build a cartelle), ma il dev serve anche
   // le rotte con estensione (src/pages/img/placeholder/[id].svg.ts) senza slash.
   trailingSlash: 'ignore',
+  devToolbar: { enabled: false },
   build: { format: 'directory' },
   integrations: [
     sitemap({

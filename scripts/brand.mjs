@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const PUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 const out = (rel, data) => { const f = path.join(PUB, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, data); console.log('scritto', rel); };
-const ACC = '#1d4f7a';
+const ACC = '#a51d24';
 
 // ── Logo 882x182 (stesse misure dello slot) ──
 const segno = (col, fondo) => `<g transform="translate(6 6)"><rect width="170" height="170" fill="${fondo}" stroke="${col}" stroke-width="6"/><path d="M30 30v110h110z" fill="none" stroke="${col}" stroke-width="7" stroke-linejoin="miter"/><path d="M52 88v30h30z" fill="none" stroke="${col}" stroke-width="5"/></g>`;
@@ -21,7 +21,7 @@ ${segno(acc, fondo)}
 </svg>
 `;
 out('img/logo/logo.svg', logo('#1c1a19', ACC, ACC, 'none'));
-out('img/logo/logo-light.svg', logo('#ffffff', '#cfe0f0', '#ffffff', 'none'));
+out('img/logo/logo-light.svg', logo('#ffffff', '#f6d4d5', '#ffffff', 'none'));
 out('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="${ACC}"/><path d="M14 12v38h38z" fill="none" stroke="#fff" stroke-width="5"/><path d="M22 32v10h10z" fill="#fff"/></svg>
 `);
 
@@ -30,7 +30,7 @@ const crcT = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; 
 const crc = (b) => { let c = 0xffffffff; for (const x of b) c = crcT[(c ^ x) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
 const chunk = (t, d) => { const l = Buffer.alloc(4); l.writeUInt32BE(d.length); const td = Buffer.concat([Buffer.from(t), d]); const c = Buffer.alloc(4); c.writeUInt32BE(crc(td)); return Buffer.concat([l, td, c]); };
 function png(w, h, griglia = false) {
-  const bg = [0x1d, 0x4f, 0x7a], gr = [0x2a, 0x5d, 0x88], wh = [0xff, 0xff, 0xff];
+  const bg = [0xa5, 0x1d, 0x24], gr = [0xb3, 0x33, 0x39], wh = [0xff, 0xff, 0xff];
   const S = Math.min(w, h), ox = (w - S) / 2 + S * 0.22, oy = S * 0.18, L = S * 0.62, t = Math.max(2, S * 0.045);
   const ix = ox + L * 0.2, iy = oy + L * 0.48, il = L * 0.32;
   const raw = Buffer.alloc((w * 3 + 1) * h);

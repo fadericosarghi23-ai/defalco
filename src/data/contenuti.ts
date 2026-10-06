@@ -43,7 +43,7 @@ export const numeriStudio = [
 export const tappe = [
   { titolo: 'Ascolto e sopralluogo', testo: 'Ogni incarico parte da un incontro e da un sopralluogo: ascoltiamo esigenze, budget e tempi e verifichiamo documenti, vincoli e stato dell’immobile.', img: progetto('casa-a-corte-mortara').immagini[1] },
   { titolo: 'Progetto e verifiche', testo: 'Rilievo, progetto e verifiche urbanistiche e catastali vanno di pari passo: sappiamo subito cosa si può fare, con quali tempi e con quali costi.', img: progetto('sanatoria-villetta-mortara').immagini[0] },
-  { titolo: 'Pratiche e autorizzazioni', testo: 'Prepariamo e presentiamo titoli edilizi, pratiche catastali e documenti per le detrazioni, seguendo l’iter con comune e Agenzia delle Entrate.', img: tav('metodo-03', 800, 444, 'catasto', 'blu', 'Tavola illustrativa: estratto di mappa catastale') },
+  { titolo: 'Pratiche e autorizzazioni', testo: 'Prepariamo e presentiamo titoli edilizi, pratiche catastali e documenti per le detrazioni, seguendo l’iter con comune e Agenzia delle Entrate.', img: tav('metodo-03', 800, 444, 'catasto', 'scuro', 'Tavola illustrativa: estratto di mappa catastale') },
   { titolo: 'Cantiere e consegna', testo: 'Direzione dei lavori e coordinamento della sicurezza fino alla fine lavori, con l’aggiornamento catastale e i documenti finali dell’immobile.', img: progetto('confini-fondo-garlasco').immagini[2] },
 ];
 

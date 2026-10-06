@@ -12,10 +12,10 @@
  * index.astro), hover di card/process/gallery, lightbox (progetti/[slug].astro).
  */
 :root{
-  --accent:#1d4f7a;
-  --accent-dark:#163d5f;
-  --accent-soft:#e3ecf4;
-  --accent-on-dark:#9cc3e6;
+  --accent:#a51d24;
+  --accent-dark:#82161c;
+  --accent-soft:#f8e5e4;
+  --accent-on-dark:#f19a9c;
   --ink:#1c1a19;
   --ink-2:#2a2725;
   --text:#3a3735;

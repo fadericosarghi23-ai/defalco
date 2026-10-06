@@ -1,6 +1,6 @@
 /**
  * Tavole tecniche illustrative generate (SVG) al posto delle foto che il cliente non ha.
- * Ogni tavola ha le misure dello slot originale; stile 'blu' (lucido scuro, per le
+ * Ogni tavola ha le misure dello slot originale; stile 'scuro' (antracite, per le
  * immagini a tutto campo) o 'carta' (fondo chiaro, per i "disegni" non ritagliati).
  * Servite da src/pages/img/tavole/[id].svg.ts. Per sostituirle con foto vere basta
  * cambiare l'oggetto immagine nei file dati.
@@ -8,7 +8,7 @@
 import type { Img } from './media';
 
 export type Tipo = 'pianta' | 'prospetto' | 'sezione' | 'catasto' | 'rilievo' | 'cantiere' | 'ritratto';
-export type Stile = 'blu' | 'carta';
+export type Stile = 'scuro' | 'carta';
 
 type Spec = { w: number; h: number; tipo: Tipo; stile: Stile; seme: number };
 export const tavole = new Map<string, Spec>();
@@ -30,8 +30,8 @@ function rng(seed: number) {
 }
 const f = (n: number) => Math.round(n * 10) / 10;
 const COL = {
-  blu: { bg: '#173a57', grid: 'rgba(255,255,255,0.06)', ln: '#e6eef6', acc: '#8fbbe3', txt: '#cfe0f0', fill: 'rgba(143,187,227,0.10)' },
-  carta: { bg: '#fbfaf7', grid: 'rgba(29,79,122,0.07)', ln: '#1c1a19', acc: '#1d4f7a', txt: '#3a3735', fill: 'rgba(29,79,122,0.06)' },
+  scuro: { bg: '#211e1d', grid: 'rgba(255,255,255,0.05)', ln: '#ece8e4', acc: '#f19a9c', txt: '#d8d2cc', fill: 'rgba(241,154,156,0.10)' },
+  carta: { bg: '#fbfaf7', grid: 'rgba(165,29,36,0.06)', ln: '#1c1a19', acc: '#a51d24', txt: '#3a3735', fill: 'rgba(165,29,36,0.06)' },
 };
 
 export function disegna(spec: Spec): string {
